@@ -116,6 +116,8 @@ int main() {
 	/// <summary>
 	/// 结构体中const使用场景
 	/// 作用:用const来防止误操作
+	/// 值传递会复制大量的数据，改成地址传递
+	/// 在形参列表写： const student* s,此时s就不会改变结构体里面的数据
 	/// </summary>
 	/// <returns></returns>
 	return 0;

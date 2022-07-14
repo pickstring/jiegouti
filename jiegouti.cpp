@@ -22,6 +22,28 @@ struct student1 {
 	int score;
 } s5;
 
+struct teacher {
+	int id;
+	string name;
+	int age;
+	student stu;
+};
+
+//结构体的值传递
+void printstudent(student s) {
+	cout << s.age << s.name << endl;
+}
+
+//结构体的地址传递
+void printstudent2(student* s) {
+	s->age = 22;
+}
+
+//结构体的地址传递法二
+void printstudent3(student &s) {
+	s.age = 123;
+}
+
 int main() {
 	//法1
 	struct student s1;
@@ -62,5 +84,39 @@ int main() {
 	student* p = &s6;
 	cout << s6.name << endl;
 	cout << p->name;
+
+	/// <summary>
+	/// 结构体嵌套结构体
+	/// 见teacher结构体
+	/// </summary>
+	/// <returns></returns>
+	teacher t;
+	t.id = 10000;
+	t.stu.age = 10;
+	teacher* p1 = &t;
+	//访问
+	cout << p1->stu.age << endl;
+	//赋值
+	p1->stu.age = 20;
+	cout << p1->stu.age << endl;
+
+	/// <summary>
+	/// 结构体做函数参数
+	/// </summary>
+	/// <returns></returns>
+	student s7;
+	s7.age = 11;
+	printstudent(s7);
+	printstudent2(&s7);
+	cout << s7.age;
+	cout << endl;
+	printstudent3(s7);
+	cout << s7.age;
+
+	/// <summary>
+	/// 结构体中const使用场景
+	/// 作用:用const来防止误操作
+	/// </summary>
+	/// <returns></returns>
 	return 0;
 }
